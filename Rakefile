@@ -10,7 +10,7 @@ PKG_FILES = FileList[
  
 spec = Gem::Specification.new do |s|
   s.name = "postcode_anywhere"
-  s.version = "0.1"
+  s.version = "0.2"
   s.author = "Matthew Crouch"
   s.email = "mcrouch@mobilezil.la"
   s.homepage = "http://github.com/mobzilla/postcode_anywhere"
