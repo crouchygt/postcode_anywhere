@@ -1,4 +1,6 @@
 require "httparty"
+require "postcode_anywhere/validator"
+
 module PostcodeAnywhere
   
   SERVICE_ADDRESS = "http://services.postcodeanywhere.co.uk/PostcodeAnywhere/Interactive/RetrieveByPostcodeAndBuilding/v1.00/xmle.ws"
@@ -15,11 +17,12 @@ module PostcodeAnywhere
     end
   end
   
-  def self.find_by_number_and_postcode(number, postcode)
-    PostcodeAnywhere.validate_key
-    sanitised_postcode = postcode.gsub(/\s/, "")
-    data = PostcodeAnywhere.lookup(number, sanitised_postcode)
-    data["Table"]["Row"]
+  def self.lookup(options = {})
+    validate_key
+    validate_postcode(options[:postcode])
+    # sanitised_postcode = postcode.gsub(/\s/, "")
+    #     data = PostcodeAnywhere.lookup(number, sanitised_postcode)
+    #     data["Table"]["Row"]
   end
   
   protected
@@ -29,11 +32,18 @@ module PostcodeAnywhere
       raise PostcodeAnywhereException, "Please provide a valid Postcode Anywhere License Key"
     end
   end
+  
+  def self.validate_postcode(postcode = "")
+    unless PostcodeAnywhere::Validator.valid_postcode?(postcode)
+      raise PostcodeAnywhereException::InvalidPostCode
+    end
+  end
 
-  def self.lookup(number, postcode)
+  def self.call(number, postcode)
     PostcodeAnywhere.get SERVICE_ADDRESS+"?Key=#{PostcodeAnywhere.key}&Postcode=#{postcode}&Building=#{number}"
   end
   
   class PostcodeAnywhereException < StandardError;end
+  class PostcodeAnywhereException::InvalidPostCode < StandardError;end
   
 end
