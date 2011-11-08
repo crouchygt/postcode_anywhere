@@ -6,6 +6,6 @@ describe PostcodeAnywhere::Validator do
   end
   
   it "should return true with valid postcode" do
-    PostcodeAnywhere::Validator.valid_postcode?("SW1X 7XL").should be_false
+    PostcodeAnywhere::Validator.valid_postcode?("S61 1LD").should be_true
   end
 end
