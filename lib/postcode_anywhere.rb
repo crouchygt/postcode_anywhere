@@ -1,12 +1,9 @@
 require "httparty"
 require "postcode_anywhere/validator"
+require "postcode_anywhere/lookup"
+require "postcode_anywhere/address"
 
 module PostcodeAnywhere
-  
-  SERVICE_ADDRESS = "http://services.postcodeanywhere.co.uk/PostcodeAnywhere/Interactive/RetrieveByPostcodeAndBuilding/v1.00/xmle.ws"
-  
-  include HTTParty
-  format :xml
   
   class << self
     
@@ -20,6 +17,7 @@ module PostcodeAnywhere
   def self.lookup(options = {})
     validate_key
     validate_postcode(options[:postcode])
+    return find_postcode(options)
     # sanitised_postcode = postcode.gsub(/\s/, "")
     #     data = PostcodeAnywhere.lookup(number, sanitised_postcode)
     #     data["Table"]["Row"]
@@ -38,9 +36,9 @@ module PostcodeAnywhere
       raise PostcodeAnywhereException::InvalidPostCode
     end
   end
-
-  def self.call(number, postcode)
-    PostcodeAnywhere.get SERVICE_ADDRESS+"?Key=#{PostcodeAnywhere.key}&Postcode=#{postcode}&Building=#{number}"
+  
+  def self.find_postcode(options)
+    PostcodeAnywhere::Lookup.lookup(:number => options[:number], :postcode => options[:postcode])
   end
   
   class PostcodeAnywhereException < StandardError;end
