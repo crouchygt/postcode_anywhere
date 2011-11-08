@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Table>
+  <Row>
+    <Error>1002</Error>
+    <Description>Postcode Invalid</Description>
+    <Cause>Postcode Invalid</Cause>
+    <Resolution>The Postcode parameter should be valid UK postcode.</Resolution>
+  </Row>
+</Table>

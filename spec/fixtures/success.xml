@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Table>
+  <Row>
+    <Udprn>51585066</Udprn>
+    <Company>Harrods</Company>
+    <Department />
+    <Line1>87-135 Brompton Road</Line1>
+    <Line2 />
+    <Line3 />
+    <Line4 />
+    <Line5 />
+    <PostTown>London</PostTown>
+    <County />
+    <Postcode>SW1X 7XL</Postcode>
+    <Mailsort>72114</Mailsort>
+    <Barcode>(SW1X7XL1AC)</Barcode>
+    <Type>SmallBusiness</Type>
+    <DeliveryPointSuffix>1A</DeliveryPointSuffix>
+    <SubBuilding />
+    <BuildingName />
+    <BuildingNumber>87-135</BuildingNumber>
+    <PrimaryStreet>Brompton Road</PrimaryStreet>
+    <SecondaryStreet />
+    <DoubleDependentLocality />
+    <DependentLocality />
+    <PoBox />
+  </Row>
+</Table>

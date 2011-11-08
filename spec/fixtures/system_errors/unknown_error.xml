@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Table>
+  <Row>
+    <Error>-1</Error>
+    <Description>Unknown error</Description>
+    <Cause>The cause of the error is unknown but details have been passed to our support staff who will investigate.</Cause>
+    <Resolution>These problems are typically short lived and often resolved by trying again in a few minutes.</Resolution>
+  </Row>
+</Table>
