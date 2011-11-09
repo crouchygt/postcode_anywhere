@@ -18,9 +18,10 @@ module PostcodeAnywhere
     validate_key
     validate_postcode(options[:postcode])
     return find_postcode(options)
-    # sanitised_postcode = postcode.gsub(/\s/, "")
-    #     data = PostcodeAnywhere.lookup(number, sanitised_postcode)
-    #     data["Table"]["Row"]
+  end
+  
+  def self.find_by_number_and_postcode(number, postcode)
+    lookup(:number => number, :postcode => postcode)
   end
   
   protected
